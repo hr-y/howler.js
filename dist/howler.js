@@ -726,7 +726,7 @@
 
       // Load and decode the audio data for playback.
       if (self._webAudio) {
-        loadBuffer(self);
+        self.xhr = loadBuffer(self);
       }
 
       return self;
@@ -984,7 +984,7 @@
 
           var listener = function() {
             self._state = 'loaded';
-            
+
             // Begin playback.
             playHtml5();
 
@@ -2434,6 +2434,7 @@
         }
       };
       safeXhrSend(xhr);
+      return xhr
     }
   };
 
@@ -2585,7 +2586,7 @@
 
 /*!
  *  Spatial Plugin - Adds support for stereo and 3D audio where Web Audio is supported.
- *  
+ *
  *  howler.js v2.2.3
  *  howlerjs.com
  *
